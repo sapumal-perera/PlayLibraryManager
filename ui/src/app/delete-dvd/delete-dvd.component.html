@@ -1,0 +1,14 @@
+<!--input field to input dvdId and button to submit. empty submit not allowed-->
+<div class="bg">
+<div class="container">
+  <h2 style="color: darkgray; font-weight: bold">Delete DVD</h2>
+  <form ngNativeValidate (ngSubmit)="deleteDvd()">
+    <div class="form-group">
+      <label for="bookIsbn">Dvd Id</label>
+      <input type="number" class="form-control" id="bookIsbn" placeholder="enter dvdId" [(ngModel)]="ISBN" name="ISBN" required>
+    </div>
+    <button type="submit" class="btn btn-success">Delete</button>
+  </form>
+  <br>
+</div>
+</div>

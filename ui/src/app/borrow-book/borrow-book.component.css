@@ -1,0 +1,16 @@
+.th {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  text-align: left;
+  background-color: #22939b;
+  color: white;
+}
+mat-header-row{
+  font-size: 12px;
+  font-weight: bold;
+}
+.bg {
+  background-image: url("../../assets/white-wooden.jpg");
+  background-position: center;
+  background-repeat: repeat;
+}

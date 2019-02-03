@@ -1,0 +1,57 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+
+GET         /                      controllers.FrontendController.index()
+
+
+
+
+GET         /library/getBooks              controllers.ItemController.getBooks
+
+GET         /library/getDvds             controllers.ItemController.getDvds
+
+GET         /library/report              controllers.ItemController.getReport
+
+GET         /library/reserve/all             controllers.ItemController.getReserveDetails
+
+GET         /library/members             controllers.ItemController.getMembers
+
+POST        /library/addBook           controllers.ItemController.addBook
+
+POST        /library/addDVD           controllers.ItemController.addDvd
+
+POST        /library/deleteBook        controllers.ItemController.deleteBook
+
+POST        /library/deleteDVD        controllers.ItemController.deleteDvd
+
+POST        /library/borrowBk        controllers.ItemController.borrowBook
+
+POST        /library/borrowDVD      controllers.ItemController.borrowDvd
+
+POST        /library/returnBook        controllers.ItemController.returnBook
+
+POST        /library/returnDVD       controllers.ItemController.returnDvd
+
+POST        /library/book           controllers.ItemController.findBook
+
+POST        /library/dvd           controllers.ItemController.findDvd
+
+POST       /library/member/new     controllers.ItemController.addMember
+
+POST       /library/deleteMember     controllers.ItemController.deleteMember
+
+POST        /library/book/reserve   controllers.ItemController.reserveBook
+
+POST       /library/reserve/delete     controllers.ItemController.deleteResEntry
+
+
+
+
+
+
+
+
+
+

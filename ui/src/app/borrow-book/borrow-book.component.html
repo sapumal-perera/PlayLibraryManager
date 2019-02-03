@@ -1,0 +1,62 @@
+<!--input field to input borrow data and button to submit. empty field submit not allowed-->
+<div class="bg">
+<br>
+<div align="left" style="border-top: 20px; width: 100px; margin-left: 130px">
+  <button *ngIf="!viewReserveTable"  (click)="reserveTable()" type="button" class="btn btn-success">View All Reserves</button>
+  <button *ngIf="viewReserveTable" (click)="reserveTableHide()" type="button" class="btn btn-success">Hide All Reserves</button>
+</div>
+<div class="container">
+  <h2 style="color: darkgray; font-weight: bold">Issue a Book</h2>
+  <form ngNativeValidate (ngSubmit)="borrowBook()">
+    <div class="form-group">
+      <label for="bookIsbn">Book ISBN</label>
+      <input type="number" class="form-control" id="bookIsbn" placeholder="enter isbn" [(ngModel)]="ISBN" name="ISBN" required>
+    </div>
+    <div class="form-group">
+      <label for="borrower">Borrower</label>
+      <input type="number" class="form-control" id="borrower" placeholder="enter borrower id" [(ngModel)]="BORROWER" name="BORROWER" required>
+    </div>
+    <div class="form-group">
+      <label for="returnDate">Allowed Days</label>
+      <input type="number" class="form-control" id="returnDate" placeholder="enter return Date" [(ngModel)]="RETURNDAYS" name="RETURNDAYS" required>
+    </div>
+
+    <button type="submit" class="btn btn-success">Issue</button>
+    <button *ngIf="reserve" (click)="reserveBook()" type="button" class="btn btn-success">Reserve</button>
+  </form>
+  <br>
+</div>
+</div>
+<br>
+<br>
+<div *ngIf="viewReserveTable" >
+  <mat-table [dataSource]="reserveDetails" class="mat-elevation-z8">
+    <!-- Position Column -->
+    <ng-container matColumnDef="isbn">
+      <mat-header-cell class="th" *matHeaderCellDef> ISBN </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.isbn}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="borrower">
+      <mat-header-cell class="th" *matHeaderCellDef> Borrower </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.borrower}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="totalDays">
+      <mat-header-cell class="th" *matHeaderCellDef> Total Days </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.totalDays}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="remainingDays">
+      <mat-header-cell class="th" *matHeaderCellDef> Days from Reserved </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.remainingDays}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="action">
+      <mat-header-cell class="th" *matHeaderCellDef> Action </mat-header-cell>
+      <mat-cell *matCellDef="let element"><div > <button (click)="deleteEntry(element.id)"  name="deleteBtn"> Delete</button></div> </mat-cell>
+    </ng-container>
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+</div>
+

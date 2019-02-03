@@ -1,0 +1,129 @@
+
+<div style="width: 400px;margin-left: 130px; margin-top: 50px;margin-bottom: 50px">
+<form ngNativeValidate (ngSubmit)="getItem()">
+  <div class="form-group">
+    <label for="item">Title Search</label>
+    <input type="text" class="form-control" id="item" placeholder="enter title" [(ngModel)]="BOOKTITLE" name="BOOKTITLE" required>
+  </div>
+  <button type="submit" class="btn btn-success">Search</button>
+  <h5>{{itemTitle}}</h5>
+  <h5>{{itemIsbn}}</h5>
+  <h5>{{itemAvalablty}}</h5>
+  <h5>{{itemType}}</h5>
+</form>
+
+</div>
+
+
+<!--<button mat-button (click)="openDialog()">Open dialog</button>-->
+<h3 style="color: darkgray; font-weight: bold">Book List</h3><button (click)="searchBook()" name="searchBook"> Search Book</button>
+<br>
+<div *ngIf="isSearchBook">
+  <ag-grid-angular   style="width: 1500px; height: 300px;"
+                     class="ag-theme-balham"
+                     [enableSorting]="true"
+                     [enableFilter]="true"
+                     [rowData]="rowData"
+                     [columnDefs]="columnDefs">
+  </ag-grid-angular>
+</div>
+<br>
+<mat-table [dataSource]="bookDetails" class="mat-elevation-z8">
+  <!-- Position Column -->
+  <ng-container matColumnDef="isbn">
+    <mat-header-cell class="th" *matHeaderCellDef> ISBN </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.isbn}} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="title">
+    <mat-header-cell class="th" *matHeaderCellDef> Title </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.title}} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="authors">
+    <mat-header-cell class="th" *matHeaderCellDef> Authors </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.authors}}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="sector">
+    <mat-header-cell class="th" *matHeaderCellDef> Availability </mat-header-cell>
+    <mat-cell *matCellDef="let element"><div [ngClass]="[element.isAvailable ? 'green' : 'red']"> {{element.sector}}</div> </mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="totalNumberOfPages">
+    <mat-header-cell class="th" *matHeaderCellDef> Page Count </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.totalNumberOfPages}} </mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="publisher">
+    <mat-header-cell class="th" *matHeaderCellDef> Publisher </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.publisher}} </mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="action">
+    <mat-header-cell class="th" *matHeaderCellDef> Action </mat-header-cell>
+    <mat-cell *matCellDef="let element"><div > <button (click)="deleteBook(element.isbn)" name="deleteBtn"> Delete</button></div> </mat-cell>
+  </ng-container>
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+</mat-table>
+
+<br>
+<br>
+<br>
+
+
+<h3 style="color: darkgray; font-weight: bold">DVD List</h3><button (click)="searchDvd()" name="searchBook"> Search Dvd</button>
+<br>
+<div *ngIf="isSearchDvd">
+  <ag-grid-angular   style="width: 1500px; height: 300px;"
+                     class="ag-theme-balham"
+                     [enableSorting]="true"
+                     [enableFilter]="true"
+                     [rowData]="rowDataDvd"
+                     [columnDefs]="columnDefsDvd">
+  </ag-grid-angular>
+</div>
+<br>
+<mat-table [dataSource]="dvdDetails" class="mat-elevation-z8">
+
+  <ng-container matColumnDef="dvdId">
+    <mat-header-cell class="th" *matHeaderCellDef> ID </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.dvdId}} </mat-cell>
+  </ng-container>
+
+
+  <ng-container matColumnDef="title">
+    <mat-header-cell class="th" *matHeaderCellDef> Title </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.title}} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="producer">
+    <mat-header-cell class="th" *matHeaderCellDef> Producer </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.producer}} </mat-cell>
+  </ng-container>
+
+
+  <ng-container matColumnDef="actors">
+    <mat-header-cell class="th" *matHeaderCellDef> Actors </mat-header-cell>
+    <mat-cell *matCellDef="let element">{{element.actors}}</mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="availableLanguages">
+    <mat-header-cell class="th" *matHeaderCellDef> Languages </mat-header-cell>
+    <mat-cell *matCellDef="let element">{{element.availableLanguages}}</mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="availableSubtitles">
+    <mat-header-cell class="th" *matHeaderCellDef> Subtitles </mat-header-cell>
+    <mat-cell *matCellDef="let element">{{element.availableSubtitles}}</mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="sector">
+    <mat-header-cell class="th" *matHeaderCellDef> Availability </mat-header-cell>
+    <mat-cell *matCellDef="let element"><div [ngClass]="[element.isAvailable ? 'green' : 'red']"> {{element.sector}}</div> </mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="action">
+    <mat-header-cell class="th" *matHeaderCellDef> Action </mat-header-cell>
+    <mat-cell *matCellDef="let element"><div > <button (click)="deleteDvd(element.dvdId)" name="deleteBtn"> Delete</button></div> </mat-cell>
+  </ng-container>
+
+
+  <mat-header-row *matHeaderRowDef="displayedSecondColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedSecondColumns;"></mat-row>
+</mat-table>
+

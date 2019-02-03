@@ -1,0 +1,25 @@
+@import url('https://unpkg.com/bootstrap@3.3.7/dist/css/bootstrap.min.css');
+
+.post-request-test {
+  padding-top: 1rem;
+}
+
+
+/**
+CSS for buttons in home page
+ */
+.button {
+  background-color: darkgray;
+  border-left-width: 1px;
+  border-left-color: black;
+  text-decoration: none;
+  padding: 15px 32px;
+  display: inline-block;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+  text-align: center;
+  font-size: 18px;
+}
+
+

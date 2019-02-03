@@ -1,0 +1,27 @@
+
+<h2 style="color: darkgray; font-weight: bold">Overdue Item Report</h2>
+
+<mat-table [dataSource]="overDueDetails" class="mat-elevation-z8">
+
+  <ng-container matColumnDef="isbn">
+    <mat-header-cell class="th" *matHeaderCellDef> ISBN/ID </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.isbn}} </mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="type">
+    <mat-header-cell class="th" *matHeaderCellDef> TYPE </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.type}} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="totalFee">
+    <mat-header-cell class="th" *matHeaderCellDef> Total Fee (Euro)</mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.totalFee}} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="borrowerId">
+    <mat-header-cell class="th" *matHeaderCellDef> Borrower ID </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.borrowerId}} </mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+</mat-table>

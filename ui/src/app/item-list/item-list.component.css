@@ -1,0 +1,27 @@
+table {
+  width: 100%;
+}
+mat-header-row{
+
+  font-size: 20px;
+  font-weight: bold;
+}
+h3{
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.red{
+  background-color: #ff6868;
+}
+
+.green {
+  background-color: #55c455;
+}
+.th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #22939b;
+  color: white;
+}

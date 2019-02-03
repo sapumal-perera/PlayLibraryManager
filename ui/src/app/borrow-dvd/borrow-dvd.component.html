@@ -1,0 +1,23 @@
+<div class="bg">
+<div class="container">
+  <h2 style="color: darkgray; font-weight: bold">Issue DVDs</h2>
+  <form ngNativeValidate (ngSubmit)="borrowDvd()">
+    <div class="form-group">
+      <label for="bookIsbn">Dvd Id</label>
+      <input type="number" class="form-control" id="bookIsbn" placeholder="enter dvdId" [(ngModel)]="ISBN" name="ISBN" required>
+    </div>
+    <div class="form-group">
+      <label for="borrower">Borrower</label>
+      <input type="number" class="form-control" id="borrower" placeholder="enter borrower id"  [(ngModel)]="BORROWER" name="BORROWER" required>
+    </div>
+
+    <div class="form-group">
+      <label for="returnDate">Return Date</label>
+      <input type="number" class="form-control" id="returnDate" placeholder="enter return date" [(ngModel)]="RETURNDAYS" name="RETURNDAYS" required>
+    </div>
+
+    <button type="submit" class="btn btn-success">Issue</button>
+  </form>
+  <br>
+</div>
+</div>

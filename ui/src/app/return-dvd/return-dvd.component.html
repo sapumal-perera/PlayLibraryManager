@@ -1,0 +1,14 @@
+<!--input field to input dvdId,return date and button to submit. empty submit not allowed-->
+<div class="bg">
+<div class="container">
+  <h2 style="color: darkgray; font-weight: bold">Return a DVD</h2>
+  <form ngNativeValidate (ngSubmit)="returnDvd()">
+    <div class="form-group">
+      <label for="bookIsbn">DVD Id</label>
+      <input type="number" class="form-control" id="bookIsbn" placeholder="enter dvdId" [(ngModel)]="ISBN" name="ISBN" required>
+    </div>
+    <button type="submit" class="btn btn-success">Return</button>
+  </form>
+  <br>
+</div>
+</div>
